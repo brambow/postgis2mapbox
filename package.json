@@ -1,0 +1,23 @@
+{
+  "name": "postgis2mapbox",
+  "version": "0.1.0",
+  "description": "utility pipeline to create and upload mapbox vector tiles from a postgis database",
+  "main": "index.js",
+  "scripts": {
+    "test": "test.js"
+  },
+  "keywords": [
+    "postgis",
+    "mapbox",
+    "vector-tile"
+  ],
+  "author": "bates rambow",
+  "license": "MIT",
+  "dependencies": {
+    "aws-sdk": "^2.229.1",
+    "dbgeo": "^1.1.0",
+    "mapbox": "^1.0.0-beta10",
+    "minimist": "^1.2.0",
+    "pg": "^7.4.1"
+  }
+}
