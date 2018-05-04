@@ -38,6 +38,7 @@ pgClient.query(
       console.log('There was a problem executing the query.', error);
     } else {
       console.log('parsing query results');
+      pgClient.end();
       parseGeoJson(result);
     }
   }
@@ -57,6 +58,7 @@ function parseGeoJson(queryResult) {
           err
         );
       } else {
+        console.log('GeoJSON parsed!');
         uploadToS3(res);
       }
     }
@@ -64,6 +66,7 @@ function parseGeoJson(queryResult) {
 }
 
 function uploadToS3(geojson) {
+  console.log('Getting Mapbox credentials.');
   // stage the file in an S3 bucket (provided by Mapbox)
   // get S3 credentials from Mapbox
   mapboxClient.createUploadCredentials((err, res) => {
@@ -79,6 +82,7 @@ function uploadToS3(geojson) {
       });
 
       // upload to S3 Bucket
+      console.log('Staging file in AWS S3 bucket.');
       s3.putObject(
         {
           Bucket: mapboxCredentials.bucket,
